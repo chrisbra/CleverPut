@@ -27,8 +27,11 @@ fu! <sid>TrimSpaces() "{{{3
     "    let pat = '\%(\(\s*\)\ze\%'. chg[0][0]. 'l\%'. chg[0][1]. 'c\)\|\%('.
     "	    \ '\%'. chg[1][0]. 'l\%'. (chg[1][1]+1). 'c\(\s*\)\)' 
 	" This should be safe, there can't by a slash in the pattern
-	exe "'[,']". 's/\%(\%'. chg[0][0]. 'l\%'. chg[0][1]. 'c\s\+\)\|'. 
-	    \ '\%(\s\+\%'. chg[1][0]. 'l\%'. chg[0][1]. 'c\)//ge' 
+	
+	" Delete all spaces within the pasted texted at the beginning and the
+	" end
+	" exe "'[,']". 's/\%(\%'. chg[0][0]. 'l\%'. chg[0][1]. 'c\s\+\)\|'. 
+	"    \ '\%(\s\+\%'. chg[1][0]. 'l\%'. chg[0][1]. 'c\)//ge' 
 	if !empty(pat)
 	    exe printf("'[,']s/%s/ /ge", join(pat, '\|'))
 	endif
